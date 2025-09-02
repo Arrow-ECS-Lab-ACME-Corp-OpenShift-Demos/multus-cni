@@ -1,0 +1,27 @@
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: vlan546
+  namespace: multus-demo
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "vlan546",
+      "type": "bridge",
+      "bridge": "br2",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.246.0/24",
+        "rangeStart": "192.168.246.100",
+        "rangeEnd": "192.168.246.199",
+        "routes": [
+          {
+            "dst": "0.0.0.0/0"
+          }
+        ]
+      },
+      "macspoofchk": true,
+      "preserveDefaultVlan": false,
+      "vlan": 546
+    }

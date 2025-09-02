@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: multus-demo
+  annotations:
+    openshift.io/display-name: "Multus Demonstration"
+  labels:
+    app: multus-demo
+spec:
+  finalizers:
+    - "kubernetes"

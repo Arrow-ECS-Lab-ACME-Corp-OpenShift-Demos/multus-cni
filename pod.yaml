@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+  namespace: multus-demo
+  annotations:
+    k8s.v1.cni.cncf.io/networks: vlan546
+spec:
+  containers:
+    - name: busybox-container
+      image: busybox
+      command: ["sleep", "3600"]
+      resources:
+        requests:
+          cpu: "10m"
+          memory: "32Mi"
+        limits:
+          cpu: "50m"
+          memory: "64Mi"
+  restartPolicy: Never
